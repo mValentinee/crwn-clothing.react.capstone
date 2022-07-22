@@ -3,7 +3,7 @@ import Directory from "./components/directory/directory.component";
 
 const App = () => {
   const categories = [
-    {gi
+    {
       id: 1,
       title: "hats",
       imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
