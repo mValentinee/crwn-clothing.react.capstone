@@ -21,28 +21,28 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  console.log(formFields);
   // Function To Be Used Aft Submit Is Processed
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
 
-  // Handler For Submitted Data Of Log In with Email/Password
+  // Handler For Submitted Data Of Sign In with Email/Password
   const submitHandler = async (event) => {
+    event.preventDefault();
+
+    // Confirm Password Matches ConfirmedPassword
+    if (confirmPassword !== password) {
+      alert("Passwords Don't Match");
+      return;
+    }
+
     try {
-      event.preventDefault();
-
-      // Confirm Password Matches ConfirmedPassword
-      if (confirmPassword !== password) {
-        alert("Passwords Don't Match");
-        return;
-      }
-
       // Auth Submitted Data Of User
       const { user } = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
+
       // Creating UserDoc From Auth Data
       await createUserDocumentFromAuth(user, { displayName });
 
@@ -54,6 +54,7 @@ const SignUpForm = () => {
       }
     }
   };
+
   // Handler That Inputs Data In Apporiate Fields
   const changeHandler = (event) => {
     const { name, value } = event.target;

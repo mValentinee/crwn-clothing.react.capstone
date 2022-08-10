@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 ///////////////////////////////////
@@ -64,7 +66,7 @@ export const createUserDocumentFromAuth = async (
     // Return User Data To Be Handled
     return userDocRef;
   } catch (err) {
-    console.log(err);
+    console.log(err.code);
   }
 };
 
@@ -87,4 +89,13 @@ export const signInWithGooglePopup = () =>
 // Sign In / Auth With Redirect
 export const signInWithGoogleRedirect = () => {
   signInWithRedirect(auth, googleProvider);
+};
+
+export const signOutUser = async () => {
+  await signOut(auth);
+};
+
+export const onAuthStateChangedListener = (callback) => {
+  if (!callback) return;
+  onAuthStateChanged(auth, callback);
 };
