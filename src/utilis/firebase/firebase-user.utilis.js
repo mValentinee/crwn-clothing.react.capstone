@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+// import { initializeApp } from "firebase/app";
+import Firebase from "./firebase-init.utilis";
 import {
   getAuth,
   signInWithRedirect,
@@ -10,21 +11,17 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+} from "firebase/firestore";
 ///////////////////////////////////
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCZh3cBCqJZGY4ndyrvLp39BKwSzuI2u5Q",
-  authDomain: "crwn-clothing-mv.firebaseapp.com",
-  projectId: "crwn-clothing-mv",
-  storageBucket: "crwn-clothing-mv.appspot.com",
-  messagingSenderId: "473312482302",
-  appId: "1:473312482302:web:79703d27d8c6594f03e6af",
-};
-
-// Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+Firebase();
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
@@ -91,6 +88,7 @@ export const signInWithGoogleRedirect = () => {
   signInWithRedirect(auth, googleProvider);
 };
 
+// Sign Out User
 export const signOutUser = async () => {
   await signOut(auth);
 };

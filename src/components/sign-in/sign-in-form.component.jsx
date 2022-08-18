@@ -2,7 +2,7 @@ import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
   signInWithExistingEmail,
-} from "../../utilis/firebase/firebase.utilis";
+} from "../../utilis/firebase/firebase-user.utilis";
 import { useState } from "react";
 import Button from "../../components/button/button.component";
 import FormInput from "../../components/form-input/form-input.component";
