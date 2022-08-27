@@ -22,7 +22,7 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
     (cartItem) => cartItem.id === cartItemToRemove.id
   );
 
-  if (exisitingCartItem.quantity === 0) {
+  if (exisitingCartItem.quantity === 1) {
     return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
   }
   // if not return new Items
@@ -55,18 +55,18 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     const newQuantity = cartItem.reduce(
-      (totalQunatity, cartItem) => totalQunatity + cartItem.quantity,
+      (totalQuantity, cartItem) => totalQuantity + cartItem.quantity,
       0
     );
     setTotalQuantity(newQuantity);
   }, [cartItem]);
 
   useEffect(() => {
-    const newPrice = cartItem.reduce(
-      (totalQunatity, cartItem) => totalQunatity + cartItem.price,
+    const newTotalPrice = cartItem.reduce(
+      (total, cartItem) => total + cartItem.quantity * cartItem.price,
       0
     );
-    setTotalPrice(newPrice);
+    setTotalPrice(newTotalPrice);
   }, [cartItem]);
 
   const addItemToCart = (product) => {
