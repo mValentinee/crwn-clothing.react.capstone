@@ -1,13 +1,11 @@
 import "./checkout-container.styles.scss";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
-import Button from "../button/button.component";
 ////////////////////////
 
 const CheckOutContainer = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
-  const { addItemToCart, removeItemInCart, clearItemInCart } =
-    useContext(CartContext);
+  const { addItemToCart, clearItemInCart } = useContext(CartContext);
 
   const newPrice = price * quantity;
 

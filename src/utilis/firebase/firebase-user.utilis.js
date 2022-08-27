@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
-import Firebase from "./firebase-init.utilis";
+import FirebaseIntit from "./firebase-init.utilis";
 import {
   getAuth,
   signInWithRedirect,
@@ -11,17 +11,10 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  collection,
-  writeBatch,
-} from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 ///////////////////////////////////
 
-Firebase();
+//FirebaseIntit();
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
