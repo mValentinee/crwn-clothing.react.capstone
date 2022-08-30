@@ -22,7 +22,7 @@ const CartDropDown = () => {
         ))}
       </div>
       <Button buttonType='inverted' onClick={toggleCheckOutHandler}>
-        Go To CheckOut
+        CheckOut
       </Button>
     </div>
   );
