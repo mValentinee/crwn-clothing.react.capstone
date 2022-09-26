@@ -37,7 +37,7 @@ export const createUserDocumentFromAuth = async (
     console.log(userDocRef);
 
     const userSnapshot = await getDoc(userDocRef);
-    console.log(userSnapshot);
+    //console.log(userSnapshot);
     console.log(userSnapshot.exists());
 
     // if USER does already exist.

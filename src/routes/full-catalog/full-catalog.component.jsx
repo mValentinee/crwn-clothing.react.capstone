@@ -1,14 +1,15 @@
 import "./full-catalog.styles.scss";
 import { useParams } from "react-router-dom";
-import { useContext, useEffect, useState, Fragment } from "react";
-import { CategoriesContext } from "../../contexts/categories.context";
+import { useEffect, useState, Fragment } from "react";
+import { useSelector } from "react-redux";
+import { SelectCategoriesData } from "../../redux-store/categories/categories.selector";
 import ProductCard from "../../components/product-card/product-card.component";
 
 //////////////////////////
 
 const FullCatalog = () => {
   const { catalog } = useParams();
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(SelectCategoriesData);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -17,8 +18,8 @@ const FullCatalog = () => {
 
   return (
     <Fragment>
-      <h2 className='catalog-title'>{catalog.toUpperCase()}</h2>
-      <div className='catalog-container'>
+      <h2 className="catalog-title">{catalog.toUpperCase()}</h2>
+      <div className="catalog-container">
         {products &&
           products.map((product) => (
             <ProductCard key={product.id} product={product} />
